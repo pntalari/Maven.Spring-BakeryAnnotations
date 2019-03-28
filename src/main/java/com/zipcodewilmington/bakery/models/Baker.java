@@ -1,7 +1,12 @@
 package com.zipcodewilmington.bakery.models;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
 
@@ -9,12 +14,10 @@ import java.util.Objects;
 public class Baker {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
-
     private String employeeId;
-
     private String specialty;
 
     public Baker() {
@@ -30,6 +33,7 @@ public class Baker {
         this.employeeId = employeeId;
         this.specialty = specialty;
     }
+
 
     public Long getId() {
         return id;
@@ -77,5 +81,15 @@ public class Baker {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, employeeId, specialty);
+    }
+
+    @Override
+    public String toString() {
+        return "Baker{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", employeeId='" + employeeId + '\'' +
+                ", specialty='" + specialty + '\'' +
+                '}';
     }
 }
