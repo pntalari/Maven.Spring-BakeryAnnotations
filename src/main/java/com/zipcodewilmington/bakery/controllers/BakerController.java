@@ -40,8 +40,8 @@ public class BakerController {
         return new ResponseEntity<>(service.update(id, baker), HttpStatus.OK);
     }
 
-
-    public ResponseEntity<Boolean> destroy(Long id) {
+    @DeleteMapping("/bakers/{id}")
+    public ResponseEntity<Boolean> destroy(@PathVariable Long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 }

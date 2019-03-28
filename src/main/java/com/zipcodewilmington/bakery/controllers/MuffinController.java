@@ -40,8 +40,8 @@ public class MuffinController {
         return new ResponseEntity<>(service.update(id, baker), HttpStatus.OK);
     }
 
-
-    public ResponseEntity<Boolean> destroy(Long id) {
+    @DeleteMapping("/muffins/{id}")
+    public ResponseEntity<Boolean> destroy(@PathVariable Long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 }
