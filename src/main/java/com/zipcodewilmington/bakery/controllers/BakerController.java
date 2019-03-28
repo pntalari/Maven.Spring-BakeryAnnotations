@@ -2,12 +2,18 @@ package com.zipcodewilmington.bakery.controllers;
 
 import com.zipcodewilmington.bakery.models.Baker;
 import com.zipcodewilmington.bakery.services.BakerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 public class BakerController {
+
+    @Autowired
     private BakerService service;
 
+    @Autowired
     public BakerController(BakerService service) {
         this.service = service;
     }
@@ -16,10 +22,12 @@ public class BakerController {
         return new ResponseEntity<>(service.index(), HttpStatus.OK);
     }
 
+    @GetMapping("/bakers/{id}")
     public ResponseEntity<Baker> show(Long id) {
         return new ResponseEntity<>(service.show(id), HttpStatus.OK);
     }
 
+    @PostMapping("/bakers")
     public ResponseEntity<Baker> create(Baker baker) {
         return new ResponseEntity<>(service.create(baker), HttpStatus.CREATED);
     }

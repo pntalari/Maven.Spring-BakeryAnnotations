@@ -2,12 +2,17 @@ package com.zipcodewilmington.bakery.controllers;
 
 import com.zipcodewilmington.bakery.models.Muffin;
 import com.zipcodewilmington.bakery.services.MuffinService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 public class MuffinController {
+    @Autowired
     private MuffinService service;
 
+    @Autowired
     public MuffinController(MuffinService service) {
         this.service = service;
     }
@@ -16,10 +21,12 @@ public class MuffinController {
         return new ResponseEntity<>(service.index(), HttpStatus.OK);
     }
 
+    @GetMapping("/muffins/{id}")
     public ResponseEntity<Muffin> show(Long id) {
         return new ResponseEntity<>(service.show(id), HttpStatus.OK);
     }
 
+    @PostMapping("/muffins")
     public ResponseEntity<Muffin> create(Muffin baker) {
         return new ResponseEntity<>(service.create(baker), HttpStatus.CREATED);
     }
