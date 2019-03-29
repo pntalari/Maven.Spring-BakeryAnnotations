@@ -15,7 +15,7 @@ public class MuffinController {
 
     private MuffinService service;
 
-    @Autowired
+  //  @Autowired
     public MuffinController(MuffinService service) {
         this.service = service;
     }

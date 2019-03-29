@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BakerService {
     private BakerRepository repository;
 
-    @Autowired
+  //  @Autowired
     public BakerService(BakerRepository repository) {
         this.repository = repository;
     }

@@ -11,7 +11,7 @@ public class MuffinService {
 
     private MuffinRepository repository;
 
-    @Autowired
+  //  @Autowired
     public MuffinService(MuffinRepository repository) {
         this.repository = repository;
     }
